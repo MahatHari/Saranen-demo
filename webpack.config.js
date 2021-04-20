@@ -1,9 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+process.env.NODE_ENV = 'development';
 module.exports = {
   mode: 'development',
+  target: 'web',
+  devtool: 'cheap-module-source-map',
 
   // app entry point is /src/index.js
   entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -39,10 +43,18 @@ module.exports = {
     ],
   },
   devServer: {
+    stats: 'minimal',
+    overlay: true,
     historyApiFallback: true,
+    disableHostCheck: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    https: false,
   },
   // add a custom index.html as the template
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify('http://localhost:3001'),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),

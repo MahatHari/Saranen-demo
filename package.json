@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open",
+    "start": "run-p start:dev  start:api",
+    "start:dev": "webpack serve --config webpack.config.js --port 3000",
+    "prestart": " node mockServer/createMockDb.js",
+    "start:api": "node mockServer/apiServer.js",
     "build": "webpack"
   },
   "keywords": [],
@@ -32,7 +35,11 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
+    "http-server": "^0.12.3",
+    "json-server": "^0.16.3",
+    "npm-run-all": "^4.1.5",
     "redux-immutable-state-invariant": "^2.1.0",
+    "source-map-loader": "^2.0.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.34.0",
     "webpack-cli": "^4.6.0",
