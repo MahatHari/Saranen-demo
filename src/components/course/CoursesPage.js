@@ -121,9 +121,10 @@ CoursesPage.prototypes = {
   courses: PropTypes.array.isRequired,
 };
 
-function mapStateToProps(state) {
+// courses is state.courses => from store
+function mapStateToProps({ courses }) {
   return {
-    courses: state.courses,
+    courses,
   };
 }
 // Dispatching actions to store using bindActionCreators
