@@ -3,20 +3,18 @@ import { connect } from 'react-redux';
 import * as courseActions from '../../redux/actions/courseActions';
 import * as authorActions from '../../redux/actions/authorActions';
 
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import CourseList from './courseList';
 
-function CoursesPage({ courses, authors, actions }) {
+function EditPage({ courses, authors, loadCourses, loadAuthors }) {
   useEffect(() => {
     if (courses.length === 0) {
-      actions.loadCourses().catch((error) => {
+      loadCourses().catch((error) => {
         console.error('Loading courses failed' + error);
       });
     }
 
     if (authors.length === 0) {
-      actions.loadAuthors().catch((error) => {
+      loadAuthors().catch((error) => {
         console.error('Loading authors failed' + error);
       });
     }
@@ -24,7 +22,7 @@ function CoursesPage({ courses, authors, actions }) {
 
   return (
     <div className='mt-5 py-md-5 px-md-4'>
-      <h2>Courses</h2>
+      <h2>Edit Course</h2>
       <CourseList courses={courses} />
     </div>
   );
@@ -52,18 +50,16 @@ function mapStateToProps({ courses, authors }) {
           }),
   };
 }
-// Dispatching actions to store using bindActionCreators
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: {
-      loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
-      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch),
-    },
-  };
+// Dispatching actions to store as an Object
+//can still be shortned by using named imports for loadCourses and loadAuthors on top
+const mapDispatchToProps = {
+  loadCourses: courseActions.loadCourses,
+  loadAuthors: authorActions.loadAuthors,
 };
+
 /* // Dispatching actions as object
 const mapDispatchToProps = {
   createCourse:courseActions.createCourse
 } */
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditPage);

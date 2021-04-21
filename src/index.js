@@ -7,6 +7,9 @@ import { Provider as ReduxProvider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
+import 'core-js/stable';
+import 'regenerator-runtime';
+
 const store = configureStore();
 
 render(

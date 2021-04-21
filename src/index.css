@@ -20,10 +20,12 @@ nav{
 }
 tr:nth-child(odd) {
     background-color: lightskyblue;
+    
     }
 
    tr:nth-child(even) {
-    background-color: lightpink;
+    background-color: rgb(103, 182, 242);
+    
     }
 
     th {
