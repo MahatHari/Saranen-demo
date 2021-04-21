@@ -2,7 +2,14 @@ import React from 'react';
 import InputText from '../shared/InputText';
 import InputSelect from '../shared/InputSelect';
 
-function Form(course, authors, onSave, onChange, saving = false, errors = {}) {
+function FormPage(
+  course,
+  authors,
+  onSave,
+  onChange,
+  saving = false,
+  errors = {}
+) {
   return (
     <form onSubmit={onSave}>
       <h2>{course.id ? 'Edit' : 'Add'} Course</h2>
@@ -45,4 +52,4 @@ function Form(course, authors, onSave, onChange, saving = false, errors = {}) {
   );
 }
 
-export default Form;
+export default FormPage;

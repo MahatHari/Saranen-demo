@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as courseActions from '../../redux/actions/courseActions';
 import * as authorActions from '../../redux/actions/authorActions';
-
+import Form from './FormPage';
+//import { newCourse } from '../../../mockServer/mockData';
 import CourseList from './courseList';
 
 function EditPage({ courses, authors, loadCourses, loadAuthors }) {
