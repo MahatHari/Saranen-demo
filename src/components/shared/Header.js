@@ -6,7 +6,7 @@ function Header() {
   return (
     <div>
       <nav
-        className='navbar navbar-expand-lg navbar-light  '
+        className='navbar navbar-expand-lg navbar-light fixed-top '
         style={{ backgroundColor: '#e3f2fd' }}
       >
         <div className='container-fluid'>
