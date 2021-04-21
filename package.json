@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p start:dev  start:api",
     "start:dev": "webpack serve --config webpack.config.js --port 3000",
     "prestart": " node mockServer/createMockDb.js",
